@@ -1,0 +1,28 @@
+---
+import type { Property } from "../types/hygraph";
+import PropertyCard from "./PropertyCard";
+
+interface Props {
+  properties: Property[];
+  numberOfNights: number;
+  estimatedAttendees: number;
+}
+
+const { properties, numberOfNights, estimatedAttendees } = Astro.props;
+---
+
+<div class="bg-gray-100 px-3 py-5 border">
+  <h3 class="font-medium text-2xl pb-3">Property Picks</h3>
+  <div class="flex flex-col md:flex-row md:items-start gap-2">
+    {
+      properties.map((property) => (
+        <PropertyCard
+          client:load
+          estimatedAttendees={estimatedAttendees}
+          numberOfNights={numberOfNights} 
+          property={property}
+        />
+      ))
+    }
+  </div>
+</div>

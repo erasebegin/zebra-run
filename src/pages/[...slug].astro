@@ -1,0 +1,75 @@
+---
+import PropertyPicks from "../components/PropertyPicks.astro";
+import EventPage from "../layouts/EventPage.astro";
+import type { Event } from "../types/hygraph";
+
+export async function getStaticPaths() {
+  const response = await fetch(
+    "https://api-eu-west-2.hygraph.com/v2/clrooruf81eh901w3fgi1oiyl/master",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        query: `
+	  	{
+			events(first: 50) {
+				createdAt
+				id
+				numberOfNights
+        estimatedAttendees
+				slug
+				theme
+				title
+        propertyPicks(first: 100) {
+            id
+            image {
+              url
+            }
+            rooms
+            location {
+              latitude
+              longitude
+            }
+            pricePerNight
+            pros
+            link
+            title
+            cons
+            notes {
+              markdown
+            }
+            accommodates
+            bathrooms
+          }
+  			}
+		}
+      `,
+      }),
+    }
+  );
+
+  const data = await response.json();
+
+  const events = data.data.events;
+
+  console.log(events);
+
+  return events.map((_event: Event) => ({
+    params: { slug: _event.slug },
+    props: _event,
+  }));
+}
+
+const _event: Event = Astro.props;
+---
+
+<EventPage {..._event}>
+  <PropertyPicks
+    properties={_event.propertyPicks || []}
+    numberOfNights={_event.numberOfNights}
+    estimatedAttendees={_event.estimatedAttendees}
+  />
+</EventPage>
