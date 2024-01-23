@@ -1,20 +1,6 @@
 @font-face {
-    font-family: 'Atkinson Regular';
-    src: url('/fonts/atkinson-regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'Atkinson Bold';
-    src: url('/fonts/atkinson-bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'Rubik Burned';
-    src: url('/fonts/RubikBurned-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
+  font-family: "Rubik Burned";
+  src: url("/fonts/RubikBurned-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}

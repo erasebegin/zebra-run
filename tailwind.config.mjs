@@ -5,7 +5,6 @@ export default {
 		extend: {
 			fontFamily: {
 				'rubik': ['"Rubik Burned"', "serif"],
-				'atkinson': ['"Atkinson Regular"', "serif"],
 				'quicksand': ['Quicksand', 'sans-serif']
 			},
 		},
