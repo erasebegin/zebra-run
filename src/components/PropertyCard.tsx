@@ -80,7 +80,7 @@ const PropertyCard = ({
           Show on Map
         </a>
       </div>
-      <div className={`${showMore ? showStyles : hideStyles}`}>
+      <div className={`${showMore ? showStyles : hideStyles} flex flex-col gap-2`}>
         <div className="border p-3">
           <p>PROS:</p>
           <ul className="list-disc pl-5">
