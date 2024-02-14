@@ -20,6 +20,8 @@ export type Property = {
   notes: Text;
   accommodates: string;
   bathrooms: string;
+  unavailable: boolean;
+  picked: boolean;
 };
 
 export type Event = {
